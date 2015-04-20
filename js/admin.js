@@ -3,7 +3,8 @@ $(function() {
 	Parse.$ = jQuery;
 
 	// Replace this line with the one on your Quickstart Guide Page
-	Parse.initialize("HC87tn6aA7c3sYx9X0vwwLVXeqHDRMYYmrUBK5zv", "3piNGGnRMhvWo8u9pKD9TDc1MJlWhlvK78Vr3fHo");
+	Parse.initialize("rP8DJxprnvYyHZv0eoEqeyDDxavOdculegUVpdw3", "Rvd9F4i0S4AcQS31qmOzo0EwbR8dYWxCOPDjGYG2");
+	// Parse.initialize("HC87tn6aA7c3sYx9X0vwwLVXeqHDRMYYmrUBK5zv", "3piNGGnRMhvWo8u9pKD9TDc1MJlWhlvK78Vr3fHo");
 
 	var Blog = Parse.Object.extend('Blog', {
 			create: function(title, content) {
@@ -24,7 +25,7 @@ $(function() {
 				});
 			}
 
-		}), 
+		}),
 		Blogs = Blogs = Parse.Collection.extend({
 			model: Blog
 		}),
@@ -78,7 +79,7 @@ $(function() {
 				'submit .form-add': 'submit'
 			},
 			submit: function(e){
-				// Prevent Default Submit Event		
+				// Prevent Default Submit Event
 				e.preventDefault();
 				// Take the form and put it into a data object
 				var data = $(e.target).serializeArray(),
@@ -99,18 +100,18 @@ $(function() {
 			}
 		}),
 		BlogRouter = Parse.Router.extend({
-		
+
 			// Here you can define some shared variables
 			initialize: function(options){
 				this.blogs = new Blogs();
 			},
-			
+
 			// This runs when we start the router. Just leave it for now.
 			start: function(){
 				Parse.history.start({pushState: true});
 				this.navigate('admin', { trigger: true });
 			},
-				
+
 			// This is where you map functions to urls.
 			// Just add '{{URL pattern}}': '{{function name}}'
 			routes: {
@@ -119,7 +120,7 @@ $(function() {
 				'add': 'add',
 				'edit/:url': 'edit'
 			},
-			
+
 			admin: function() {
 				// This is how you can current user in Parse
 				var currentUser = Parse.User.current();
@@ -162,7 +163,7 @@ $(function() {
 
 		}),
 		blogRouter = new BlogRouter();
-		
+
 		blogRouter.start();
 
 });
